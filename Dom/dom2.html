@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>On Click Example</title>
+</head>
+<body>
+<h2>Enter Your Details</h2>
+
+Name:
+<input type="text" id="name" placeholder="Enter your name">
+<br><br>
+
+Age:
+<input type="number" id="age" placeholder="Enter your age">
+<br><br>
+Course:
+<input type="text" id="course" placeholder="Enter your course">
+<br><br>
+<button id="btn">Click Me</button>
+<p id="result"></p>
+
+<script>
+   document.getElementById("btn").addEventListener("click", function() {
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let course = document.getElementById("course").value;
+       
+        alert(
+            "Name: " + name +
+            "\nAge: " + age +
+            "\nCourse: " + course
+        );
+
+        document.getElementById("name").value = "samiksha";
+        document.getElementById("age").value = 22;
+        document.getElementById("course").value = "Java";
+    });
+</script>
+</body>
+</html>

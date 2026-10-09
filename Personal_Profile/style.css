@@ -1,0 +1,124 @@
+/* Universal Selector */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Element Selector */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Grouping Selector */
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+/* Header */
+header {
+    background-color: #4b6cb7;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 5px solid #182848;
+}
+
+header h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+/* Common Section Styling */
+section {
+    background-color: white;
+    width: 80%;
+    margin: 25px auto;
+    padding: 25px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+}
+
+/* Descendant Selector */
+.profile p {
+    margin-top: 10px;
+}
+
+/* Class Selector */
+/*.hobbies {
+   /* background-color:thistle;
+}*/
+
+.hobbies li {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+/* ID Selector */
+#education {
+    background-color:rgba(red, green, blue, alpha);
+}
+
+#education h2 {
+    text-decoration: underline;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #4b6cb7;
+    color: white;
+}
+
+/* Skills */
+.skills {
+    text-align: center;
+}
+
+.skill-box {
+    display: inline-block;
+    background-color:violet;
+    color: white;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    font-size: 17px;
+}
+
+/* Footer */
+footer {
+    background-color:brown;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}

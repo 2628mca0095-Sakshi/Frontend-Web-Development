@@ -1,0 +1,129 @@
+/* Universal Selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    text-align: center;
+    padding: 40px;
+}
+
+
+/* Main Heading */
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+
+/* Subtitle */
+.subtitle {
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 18px;
+}
+
+
+/* Product Container */
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+
+/* Product Card */
+.product-card {
+    width: 250px;
+
+    /* Box Model */
+    padding: 20px;
+    margin: 10px;
+
+    border: 2px solid #ddd;
+    border-radius: 15px;
+
+    background-color: white;
+
+    /* Shadow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    /* Border Box */
+    box-sizing: border-box;
+}
+
+
+/* Product Image */
+.product-image {
+    height: 140px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eef2ff;
+
+    border-radius: 10px;
+
+    font-size: 70px;
+
+    margin-bottom: 18px;
+}
+
+
+/* Product Heading */
+.product-card h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+
+/* Product Description */
+.description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+
+/* Price */
+.price {
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+/* Button */
+button {
+    width: 100%;
+
+    padding: 11px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #333;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Button Hover */
+button:hover {
+    background-color: #555;
+}

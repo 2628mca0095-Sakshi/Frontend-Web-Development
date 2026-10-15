@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Quiz</title>
+</head>
+<body>
+
+    <h1>Interactive Quiz Application</h1>
+
+    <h3 id="question"></h3>
+
+    <div id="options"></div>
+
+    <p id="result"></p>
+
+    <button id="nextBtn" onclick="nextQuestion()" disabled>
+        Next Question
+    </button>
+
+    <button onclick="restartQuiz()">Restart Quiz</button>
+
+    <script>
+        let questions = [
+            {
+                question: "Which language makes a webpage interactive?",
+                options: ["HTML", "CSS", "JavaScript", "Python"],
+                answer: 2
+            },
+            {
+                question: "Which tag creates a hyperlink in HTML?",
+                options: ["<p>", "<a>", "<h1>", "<img>"],
+                answer: 1
+            },
+            {
+                question: "Which keyword declares a variable in JavaScript?",
+                options: ["int", "var", "float", "char"],
+                answer: 1
+            },
+            {
+                question: "Which method prints a message in the console?",
+                options: ["print()", "display()", "console.log()", "show()"],
+                answer: 2
+            },
+            {
+                question: "Which symbol is used for a single-line comment?",
+                options: ["//", "<!-- -->", "**", "##"],
+                answer: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function displayQuestion() {
+            answered = false;
+
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("nextBtn").disabled = true;
+
+            let q = questions[currentQuestion];
+
+            document.getElementById("question").innerHTML =
+                (currentQuestion + 1) + ". " + q.question;
+
+            let output = "";
+
+            for (let i = 0; i < q.options.length; i++) {
+                output += "<button onclick='checkAnswer(" + i + ")'>" +
+                    q.options[i] + "</button><br><br>";
+            }
+
+            document.getElementById("options").innerHTML = output;
+        }
+
+        function checkAnswer(selected) {
+            if (answered) {
+                return;
+            }
+
+            answered = true;
+
+            let correct = questions[currentQuestion].answer;
+
+            if (selected === correct) {
+                score++;
+
+                document.getElementById("result").innerHTML =
+                    "Correct Answer!";
+            } else {
+                document.getElementById("result").innerHTML =
+                    "Wrong Answer! Correct answer: " +
+                    questions[currentQuestion].options[correct];
+            }
+
+            document.getElementById("nextBtn").disabled = false;
+        }
+
+        function nextQuestion() {
+            if (!answered) {
+                return;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                document.getElementById("question").innerHTML =
+                    "Quiz Completed!";
+
+                document.getElementById("options").innerHTML = "";
+
+                document.getElementById("result").innerHTML =
+                    "Your Final Score: " + score + " / " + questions.length;
+
+                document.getElementById("nextBtn").disabled = true;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            displayQuestion();
+        }
+
+        displayQuestion();
+    </script>
+
+</body>
+</html>

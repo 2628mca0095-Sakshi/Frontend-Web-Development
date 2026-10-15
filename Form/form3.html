@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Form</title>
+</head>
+<body><h2>Student Information Form</h2>
+
+<form id="studentForm">
+
+    <label>Name:</label>
+    <input type="text" id="name">
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" id="age">
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" id="email">
+    <br><br>
+
+    <label>Contact:</label>
+    <input type="tel" id="contact">
+    <br><br>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+    <br><br>
+
+    <label>Skills:</label>
+    <input type="checkbox" name="skills" value="HTML"> HTML
+    <input type="checkbox" name="skills" value="CSS"> CSS
+    <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+    <input type="checkbox" name="skills" value="Java"> Java
+    <input type="checkbox" name="skills" value="Python"> Python
+    <input type="checkbox" name="skills" value="PHP"> PHP
+    <input type="checkbox" name="skills" value="SQL"> SQL
+    <input type="checkbox" name="skills" value="C">C
+    <br><br>
+
+    <label>Address:</label>
+    <textarea id="address" rows="4" cols="30"></textarea>
+    <br><br>
+
+    <button type="button" onclick="readValues()">Read Values</button>
+
+    <button type="reset" onclick="resetOutput()">Reset</button>
+
+</form>
+
+<h2>Student Information</h2>
+
+<p id="result"></p>
+
+<script>
+
+    function readValues() {
+
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let email = document.getElementById("email").value;
+        let contact = document.getElementById("contact").value;
+        let address = document.getElementById("address").value;
+
+        let genderOption = document.querySelector(
+            'input[name="gender"]:checked'
+        );
+
+        let gender = genderOption ? genderOption.value : "";
+
+        let selectedSkills = document.querySelectorAll(
+            'input[name="skills"]:checked'
+        );
+
+        let skills = [];
+
+        selectedSkills.forEach(function(skill) {
+            skills.push(skill.value);
+        });
+       
+        let skillMessage = "";
+
+        if (skills.length === 0) {
+            skillMessage = "You have not selected any skills.";
+        }
+        else if (skills.length === 1) {
+            skillMessage = "You have selected your skill as " + skills[0] + ".";
+        }
+        else {
+            skillMessage = "You have selected your skills as " +
+                skills.slice(0, -1).join(", ") +
+                " and " + skills[skills.length - 1] + ".";
+        }
+
+        document.getElementById("result").innerHTML =
+            
+            "Welcome " + name + "!<br><br>" +
+
+            "Miss " + name + ", you are " + age +
+            " years old.<br><br>" +
+
+            "Your gender is " + gender + ".<br><br>" +
+
+            "We can contact you on your mobile number " +
+            contact + " or at your address " + address + ".<br><br>" +
+
+            "We can also send you an email at " + email + ".<br><br>" +
+            skillMessage;
+
+            
+    }
+
+    function resetOutput() {
+        document.getElementById("result").innerHTML = "";
+    }
+</script>
+</body>
+</html>

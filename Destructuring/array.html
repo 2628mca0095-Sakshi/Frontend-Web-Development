@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destructuring</title>
+</head>
+<body>
+
+    <script>
+       console.log ("Array with 5 values into 3 variables");
+        let arr1 = [10, 20, 30, 40, 50];
+
+        let [a, b, c] = arr1;
+
+        console.log(a);
+         console.log(b);
+          console.log(c);
+        
+
+
+        console.log("Array with 3 values into 5 variables");
+
+        let arr2 = [100, 200, 300];
+
+        let [p, q, r, s, t] = arr2;
+
+       console.log(p);
+         console.log(q);
+           console.log(r);
+             console.log(s);
+               console.log(t);
+
+
+
+        console.log("Object with 5 keys into 3 variables");
+
+        let student1 = {
+            name: "Sakshi",
+            age: 22,
+            course: "MCA",
+            city: "Delhi",
+            marks: 90
+        };
+
+        let { name, age, course } = student1;
+
+        console.log(name);
+        console.log(age);
+        console.log(course);
+
+
+        document.write("Object with 3 keys into 5 variables");
+
+        let student2 = {
+            name: "Rahul",
+            age: 23,
+            course: "MCA"
+        };
+
+        let {
+            name: n,
+            age: ag,
+            course: cr,
+            city,
+            marks
+        } = student2;
+
+       console.log(n);
+       console.log(ag);
+       console.log(cr);
+       console.log(city);
+       console.log(marks);
+    </script>
+
+</body>
+</html>

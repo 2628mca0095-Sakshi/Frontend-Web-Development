@@ -1,0 +1,203 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+</head>
+
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <form id="studentForm">
+
+        Name:
+        <input type="text" id="name">
+        <div id="nameError"></div>
+        <br>
+
+        Email:
+        <input type="text" id="email">
+        <div id="emailError"></div>
+        <br>
+
+        Password:
+        <input type="password" id="password">
+        <div id="passwordError"></div>
+        <br>
+
+        Confirm Password:
+        <input type="password" id="confirmPassword">
+        <div id="confirmError"></div>
+        <br>
+
+        Gender:
+        <input type="radio" name="gender" value="Male"> Male
+
+        <input type="radio" name="gender" value="Female"> Female
+
+        <input type="radio" name="gender" value="Other"> Other
+
+        <div id="genderError"></div>
+        <br>
+
+        Contact:
+        <input type="text" id="contact">
+        <div id="contactError"></div>
+        <br>
+
+        <button type="submit">Submit</button>
+
+        <p id="success"></p>
+
+    </form>
+
+
+    <script>
+
+        let form = document.getElementById("studentForm");
+
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let confirmPassword = document.getElementById("confirmPassword");
+        let contact = document.getElementById("contact");
+
+
+        // Name Validation
+
+        function validateName() {
+
+            if (name.value.trim().length < 3) {
+                document.getElementById("nameError").innerText =
+                    "Name must have minimum 3 characters";
+                return false;
+            }
+
+            document.getElementById("nameError").innerText = "";
+            return true;
+        }
+
+
+        // Email Validation
+
+        function validateEmail() {
+
+            let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!pattern.test(email.value.trim())) {
+                document.getElementById("emailError").innerText =
+                    "Enter valid email";
+                return false;
+            }
+
+            document.getElementById("emailError").innerText = "";
+            return true;
+        }
+
+
+        // Password Validation
+
+        function validatePassword() {
+
+            if (password.value.length < 8) {
+                document.getElementById("passwordError").innerText =
+                    "Password must have minimum 8 characters";
+                return false;
+            }
+
+            document.getElementById("passwordError").innerText = "";
+            return true;
+        }
+
+
+        // Confirm Password Validation
+
+        function validateConfirm() {
+
+            if (confirmPassword.value !== password.value) {
+                document.getElementById("confirmError").innerText =
+                    "Password does not match";
+                return false;
+            }
+
+            document.getElementById("confirmError").innerText = "";
+            return true;
+        }
+
+
+        // Gender Validation
+
+        function validateGender() {
+
+            let gender = document.querySelector('input[name="gender"]:checked');
+
+            if (gender == null) {
+                document.getElementById("genderError").innerText =
+                    "Please select gender";
+                return false;
+            }
+
+            document.getElementById("genderError").innerText = "";
+            return true;
+        }
+
+
+        // Contact Validation
+
+        function validateContact() {
+
+            let pattern = /^[6-9][0-9]{9}$/;
+
+            if (!pattern.test(contact.value)) {
+                document.getElementById("contactError").innerText =
+                    "Enter valid 10 digit contact number";
+                return false;
+            }
+
+            document.getElementById("contactError").innerText = "";
+            return true;
+        }
+
+
+        // Blur Event
+
+        name.addEventListener("blur", validateName);
+        email.addEventListener("blur", validateEmail);
+        password.addEventListener("blur", validatePassword);
+        confirmPassword.addEventListener("blur", validateConfirm);
+        contact.addEventListener("blur", validateContact);
+
+
+        // Submit Event
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let a = validateName();
+            let b = validateEmail();
+            let c = validatePassword();
+            let d = validateConfirm();
+            let e = validateGender();
+            let f = validateContact();
+
+            if (a && b && c && d && e && f) {
+
+                document.getElementById("success").innerText =
+                    "Registration Successful!";
+
+                form.reset();
+
+            } else {
+
+                document.getElementById("success").innerText = "";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+```

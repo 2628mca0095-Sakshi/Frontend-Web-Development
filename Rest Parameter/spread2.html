@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>modify an array</title>
+    </head>
+    <body>
+        <script>
+            let or=[10,20,30];
+            let cp=[...or];
+            cp.push(40);
+            console.log("ORIGINAL:"+or);
+            console.log("COPY:"+cp);
+            let student={
+                name:"Rahuul",
+                course:"MCA"
+            };
+            let result={
+                marks:85,
+                grade:"A"
+            };
+            let details={...student,...result};
+            console.log(details);
+        </script>
+    </body>
+</html>

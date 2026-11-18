@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Registration</title>
+</head>
+<body>
+
+    <h2>University Registration</h2>
+
+    <form id="myForm">
+
+        Name:
+        <input type="text" id="name"><br><br>
+
+        Email:
+        <input type="text" id="email"><br><br>
+
+        Age:
+        <input type="text" id="age"><br><br>
+
+        Gender:
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <br><br>
+
+        Course:
+        <select id="course">
+            <option value="">Select Course</option>
+            <option value="BCA">BCA</option>
+            <option value="BTech">B.Tech</option>
+            <option value="BBA">BBA</option>
+            <option value="MCA">MCA</option>
+        </select>
+        <br><br>
+
+        Study Mode:
+        <input type="radio" name="mode" value="Regular"> Regular
+        <input type="radio" name="mode" value="Distance"> Distance
+        <br><br>
+
+        Password:
+        <input type="password" id="password"><br><br>
+
+        Confirm Password:
+        <input type="password" id="confirmPassword"><br><br>
+
+        <input type="checkbox" id="terms">
+        I accept the Terms and Conditions.
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var age = document.getElementById("age").value.trim();
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var course = document.getElementById("course").value;
+            var terms = document.getElementById("terms").checked;
+
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var mode = document.querySelector('input[name="mode"]:checked');
+
+            var message = document.getElementById("message");
+
+            message.innerHTML = "";
+
+            if (name == "") {
+                message.innerHTML = "Please enter your name.";
+                return;
+            }
+
+            var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (!emailPattern.test(email)) {
+                message.innerHTML = "Please enter a valid email.";
+                return;
+            }
+
+            if (age == "" || isNaN(age) || age < 16 || age > 100) {
+                message.innerHTML = "Please enter a valid age between 16 and 100.";
+                return;
+            }
+
+            if (gender == null) {
+                message.innerHTML = "Please select your gender.";
+                return;
+            }
+
+            if (course == "") {
+                message.innerHTML = "Please select a course.";
+                return;
+            }
+
+            if (mode == null) {
+                message.innerHTML = "Please select your study mode.";
+                return;
+            }
+
+            if (password.length < 6) {
+                message.innerHTML = "Password must contain at least 6 characters.";
+                return;
+            }
+
+            if (password != confirmPassword) {
+                message.innerHTML = "Passwords do not match.";
+                return;
+            }
+
+            if (!terms) {
+                message.innerHTML = "Please accept the Terms and Conditions.";
+                return;
+            }
+
+            message.innerHTML = "Registration successful!";
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculation</title>
+</head>
+
+<body>
+
+    <h2>Marks Calculation</h2>
+
+    <script>
+
+        function marksCalculating(...marks) {
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+
+            let average = total / marks.length;
+
+            console.log("Marks: " + marks);
+            console.log("Total Marks: " + total);
+            console.log("Average Marks: " + average);
+
+        }
+
+        marksCalculating(80, 90, 75, 85, 95);
+
+    </script>
+
+</body>
+</html>

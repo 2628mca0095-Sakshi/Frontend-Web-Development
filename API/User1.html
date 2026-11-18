@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetching Data With The Help of API</title>
+        <body>
+            <h1>Fetch Data of a single User</h1>
+            <script>
+                async function getUser(){
+                    let response= await fetch(
+                      "https://jsonplaceholder.typicode.com/users/1"
+                    );
+                    let user= await response.json();                    
+                    console.log("Name:",user.name);
+                    console.log("Email:",user.email);
+                     
+                    
+                }
+                getUser();
+            </script>
+        </body>
+    </head>
+</html>

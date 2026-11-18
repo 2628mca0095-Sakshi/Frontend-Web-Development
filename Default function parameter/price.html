@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Calculation</title>
+</head>
+
+<body>
+
+    <h2>Calculate Price</h2>
+
+    <script>
+
+        function calculatePrice(price, quantity = 1) {
+
+            let total = price * quantity;
+
+            console.log("Price: " + price);
+            console.log("Quantity: " + quantity);
+            console.log("Total Price: " + total);
+
+        }
+
+        calculatePrice(500, 3);
+
+        calculatePrice(1000);
+
+    </script>
+
+</body>
+</html>

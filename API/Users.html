@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Post Office Details</title>
+</head>
+<body>
+
+    <h1>Fetch Post Office Details</h1>
+
+    Enter PIN Code:
+    <input type="text" id="pin">
+
+    <button onclick="getPostOffice()">Search</button>
+
+    <script>
+
+        async function getPostOffice() {
+
+            let pin = document.getElementById("pin").value;
+
+            let response = await fetch(
+                "https://api.postalpincode.in/pincode/" + pin
+            );
+
+            if (!response.ok) {
+                throw new Error("HTTP Error: " + response.status);
+            }
+
+            let data = await response.json();
+
+            if (data[0].Status == "Success") {
+
+                let office = data[0].PostOffice;
+
+                for (let i = 0; i < office.length; i++) {
+
+                    console.log("PIN Code:", office[i].Pincode);
+                    console.log("Post Office:", office[i].Name);
+                    console.log("District:", office[i].District);
+                    console.log("State:", office[i].State);
+
+                    console.log("----------------------");
+                }
+
+            } 
+            else {
+                console.log("Invalid PIN Code!");
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Post Office Details</title>
+</head>
+<body>
+
+    <h1>Fetch Post Office Details</h1>
+
+    Enter PIN Code:
+    <br><br>
+    <input type="text" id="pin">
+    <br>
+    <br>
+
+    <button onclick="getPostOffice()">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+
+        async function getPostOffice() {
+
+            let pin = document.getElementById("pin").value;
+
+            let response = await fetch(
+                "https://api.postalpincode.in/pincode/" + pin
+            );
+
+            if (!response.ok) {
+                throw new Error("HTTP Error: " + response.status);
+            }
+
+            let data = await response.json();
+
+            let output = "";
+
+            if (data[0].Status == "Success") {
+
+                let office = data[0].PostOffice;
+
+                output = `
+                    <h2>Post Office Details</h2>
+
+                    <table border="1" cellpadding="10">
+                        <tr>
+                            <th>PIN Code</th>
+                            <th>Post Office</th>
+                            <th>District</th>
+                            <th>State</th>
+                        </tr>
+                `;
+
+                for (let i = 0; i < office.length; i++) {
+
+                    output += `
+                        <tr>
+                            <td>${office[i].Pincode}</td>
+                            <td>${office[i].Name}</td>
+                            <td>${office[i].District}</td>
+                            <td>${office[i].State}</td>
+                        </tr>
+                    `;
+                }
+
+                output += "</table>";
+
+            }
+            else {
+                output = "Invalid PIN Code!";
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+
+    </script>
+
+</body>
+</html>

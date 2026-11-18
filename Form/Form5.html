@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+</head>
+
+<body>
+
+<form id="studentForm">
+
+    <h2>Student Registration</h2>
+
+    Name:
+    <input type="text" id="name">
+    <div class="error" id="nameError"></div>
+    <br><br>
+
+    Email:
+    <input type="text" id="email">
+    <div class="error" id="emailError"></div>
+    <br><br>
+
+
+    Password:
+    <input type="password" id="password">
+    <div class="error" id="passwordError"></div>
+    <br><br>
+
+    Confirm Password:
+    <input type="password" id="confirmPassword">
+    <div class="error" id="confirmError"></div>
+    <br><br>
+
+
+    Gender:
+    <br><br>
+    <input type="radio" name="gender" value="Male" style="width:auto;"> Male
+
+    <input type="radio" name="gender" value="Female" style="width:auto;"> Female
+
+    <input type="radio" name="gender" value="Other" style="width:auto;"> Other
+
+    <div class="error" id="genderError"></div>
+    <br><br>
+
+    Contact:
+    <input type="text" id="contact">
+    <div class="error" id="contactError"></div>
+    <br><br>
+
+    <button type="submit">Submit</button>
+
+    <div class="success" id="success"></div>
+    <br><br>
+
+</form>
+
+
+<script>
+
+    let form = document.getElementById("studentForm");
+
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirmPassword");
+    let contact = document.getElementById("contact");
+
+    function validateName() {
+
+        if (name.value.trim().length < 3) {
+            document.getElementById("nameError").innerText =
+                "Name must contain minimum 3 characters";
+            return false;
+        }
+
+        document.getElementById("nameError").innerText = "";
+        return true;
+    }
+
+   function validateEmail() {
+
+    
+
+    let at = email.indexOf("@");
+    let dot = email.lastIndexOf(".");
+
+    if (at < 1 || dot < at + 2 || dot === email.length - 1) {
+
+        document.getElementById("emailError").innerText =
+            "Enter a valid email address";
+
+        return false;
+    }
+
+    document.getElementById("emailError").innerText = "";
+
+    return true;
+}
+
+
+    // Password Validation
+    function validatePassword() {
+
+        if (password.value.length < 8) {
+            document.getElementById("passwordError").innerText =
+                "Password must contain at least 8 characters";
+            return false;
+        }
+
+        document.getElementById("passwordError").innerText = "";
+
+        validateConfirm();
+
+        return true;
+    }
+
+
+    // Confirm Password Validation
+    function validateConfirm() {
+
+        if (confirmPassword.value === "") {
+            document.getElementById("confirmError").innerText =
+                "Please confirm your password";
+            return false;
+        }
+
+        if (password.value !== confirmPassword.value) {
+            document.getElementById("confirmError").innerText =
+                "Password does not match";
+            return false;
+        }
+
+        document.getElementById("confirmError").innerText = "";
+        return true;
+    }
+
+
+    // Gender Validation
+    function validateGender() {
+
+        let gender = document.querySelector('input[name="gender"]:checked');
+
+        if (gender === null) {
+            document.getElementById("genderError").innerText =
+                "Please select your gender";
+            return false;
+        }
+
+        document.getElementById("genderError").innerText = "";
+        return true;
+    }
+
+
+    // Contact Validation
+    function validateContact() {
+
+        let pattern = /^[6-9][0-9]{9}$/;
+
+        if (!pattern.test(contact.value)) {
+            document.getElementById("contactError").innerText =
+                "Enter valid 10 digit mobile number";
+            return false;
+        }
+
+        document.getElementById("contactError").innerText = "";
+        return true;
+    }
+
+
+    // Blur Event: Field se bahar jaane par validation
+
+    name.addEventListener("blur", validateName);
+
+    email.addEventListener("blur", validateEmail);
+
+    password.addEventListener("blur", validatePassword);
+
+    confirmPassword.addEventListener("blur", validateConfirm);
+
+    contact.addEventListener("blur", validateContact);
+
+    document.querySelectorAll('input[name="gender"]').forEach(function(radio) {
+        radio.addEventListener("change", validateGender);
+    });
+
+
+    // Submit Button Validation
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let a = validateName();
+        let b = validateEmail();
+        let c = validatePassword();
+        let d = validateConfirm();
+        let e = validateGender();
+        let f = validateContact();
+
+        if (a && b && c && d && e && f) {
+
+            document.getElementById("success").innerText =
+                "Registration Successful!";
+
+            form.reset();
+
+        } else {
+
+            document.getElementById("success").innerText = "";
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
